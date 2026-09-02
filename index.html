@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Putra Panel Store - Hosting Pterodactyl Murah & Cepat</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: '#3b82f6',
+                        brandHover: '#2563eb',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-900 text-gray-100 font-sans antialiased">
+
+    <!-- Header / Navbar -->
+    <header class="border-b border-gray-800 bg-gray-900/80 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fa-solid fa-server text-brand text-2xl"></i>
+                <span class="text-xl font-bold tracking-wide text-white">PUTRA<span class="text-brand">PANEL</span></span>
+            </div>
+            <a href="#produk" class="bg-brand hover:bg-brandHover text-white px-4 py-2 rounded-lg text-sm font-semibold transition">
+                Lihat Paket
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-20 text-center px-4">
+        <div class="max-w-3xl mx-auto">
+            <span class="bg-blue-500/10 text-brand border border-blue-500/20 text-xs font-semibold px-3 py-1 rounded-full inline-block mb-4">
+                Pterodactyl High Quality Server
+            </span>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-6">
+                Panel Pterodactyl Hemat & Performa Tinggi
+            </h1>
+            <p class="text-gray-400 text-lg mb-8">
+                Cocok untuk kebutuhan hosting server Minecraft, Bot WhatsApp, Bot Telegram, dan Node.js. Garansi aktif & diproses cepat secara manual via WhatsApp.
+            </p>
+            <div class="flex justify-center gap-4">
+                <a href="#produk" class="bg-brand hover:bg-brandHover text-white px-6 py-3 rounded-lg font-medium transition shadow-lg shadow-blue-500/20">
+                    Pilih Paket Sekarang
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Keunggulan -->
+    <section class="py-12 bg-gray-800/50">
+        <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="p-6 bg-gray-800 border border-gray-700 rounded-xl">
+                <i class="fa-solid fa-bolt text-brand text-3xl mb-4"></i>
+                <h3 class="text-lg font-bold text-white mb-2">Proses Cepat</h3>
+                <p class="text-gray-400 text-sm">Pesanan akan dibuatkan langsung oleh Admin setelah bukti transfer dikirim.</p>
+            </div>
+            <div class="p-6 bg-gray-800 border border-gray-700 rounded-xl">
+                <i class="fa-solid fa-shield-halved text-brand text-3xl mb-4"></i>
+                <h3 class="text-lg font-bold text-white mb-2">Uptime 99.9%</h3>
+                <p class="text-gray-400 text-sm">Server stabil dengan node VPS berkualitas tinggi untuk pengalaman terbaik.</p>
+            </div>
+            <div class="p-6 bg-gray-800 border border-gray-700 rounded-xl">
+                <i class="fa-solid fa-headset text-brand text-3xl mb-4"></i>
+                <h3 class="text-lg font-bold text-white mb-2">Support Admin</h3>
+                <p class="text-gray-400 text-sm">Bantuan ramah dari Admin jika mengalami kendala dalam penggunaan panel.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Produk / Daftar Harga -->
+    <section id="produk" class="py-20 max-w-6xl mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-white">Daftar Paket Panel</h2>
+            <p class="text-gray-400 mt-2">Pilih spesifikasi panel yang sesuai kebutuhan kamu</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Paket 1 -->
+            <div class="bg-gray-800 border border-gray-700 rounded-2xl p-6 flex flex-col justify-between hover:border-brand transition">
+                <div>
+                    <h3 class="text-xl font-bold text-white">Panel 1 GB</h3>
+                    <p class="text-gray-400 text-sm mt-1">Hemat untuk bot / test server</p>
+                    <div class="my-6">
+                        <span class="text-3xl font-extrabold text-white">Rp 2.000</span>
+                        <span class="text-gray-400 text-sm">/ bulan</span>
+                    </div>
+                    <ul class="space-y-3 text-sm text-gray-300 border-t border-gray-700 pt-6">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brand mr-2"></i> RAM 1024 MB</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brand mr-2"></i> CPU 50% - 100%</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brand mr-2"></i> Disk 2.000 MB</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brand mr-2"></i> Full Akses Panel</li>
+                    </ul>
+                </div>
+                <button onclick="orderWA('Panel 1 GB', 'Rp 2.000')" class="mt-8 w-full bg-brand hover:bg-brandHover text-white py-3 rounded-xl font-semibold transition">
+                    Beli via WhatsApp
+                </button>
+            </div>
+
+            <!-- Paket 2 (Popular) -->
+            <div class="bg-gray-800 border-2 border-brand rounded-2xl p-6 flex flex-col justify-between relative shadow-xl shadow-blue-500/10">
+                <span class="absolute -top-3 right-6 bg-brand text-white text-xs font-bold px-3 py-1 rounded-full">POPULER</span>
+                <div>
+                    <h3 class="text-xl font-bold text-white">Panel 3 GB</h3>
+                    <p class="text-gray-400 text-sm mt-1">Ideal untuk Bot WhatsApp & Game</p>
+                    <div class="my-6">
+                        <span class="text-3xl font-extrabold text-white">Rp 5.000</span>
+                        <span class="text-gray-400 text-sm">/ bulan</span>
+                    </div>
+                    <ul class="space-y-3 text-sm text-gray-300 border-t border-gray-700 pt-6">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brand mr-2"></i> RAM 3072 MB</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brand mr-2"></i> CPU 150%</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brand mr-2"></i> Disk 5.000 MB</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brand mr-2"></i> Server Minecraft / Node.js</li>
+                    </ul>
+                </div>
+                <button onclick="orderWA('Panel 3 GB', 'Rp 5.000')" class="mt-8 w-full bg-brand hover:bg-brandHover text-white py-3 rounded-xl font-semibold transition">
+                    Beli via WhatsApp
+                </button>
+            </div>
+
+            <!-- Paket 3 -->
+            <div class="bg-gray-800 border border-gray-700 rounded-2xl p-6 flex flex-col justify-between hover:border-brand transition">
+                <div>
+                    <h3 class="text-xl font-bold text-white">Panel Unlimited</h3>
+                    <p class="text-gray-400 text-sm mt-1">Performa maksimal tanpa batas</p>
+                    <div class="my-6">
+                        <span class="text-3xl font-extrabold text-white">Rp 10.000</span>
+                        <span class="text-gray-400 text-sm">/ bulan</span>
+                    </div>
+                    <ul class="space-y-3 text-sm text-gray-300 border-t border-gray-700 pt-6">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brand mr-2"></i> RAM Unlimited</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brand mr-2"></i> CPU Unlimited</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brand mr-2"></i> Disk Unlimited</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brand mr-2"></i> Prioritas Support Admin</li>
+                    </ul>
+                </div>
+                <button onclick="orderWA('Panel Unlimited', 'Rp 10.000')" class="mt-8 w-full bg-brand hover:bg-brandHover text-white py-3 rounded-xl font-semibold transition">
+                    Beli via WhatsApp
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-800 py-8 text-center text-gray-500 text-sm">
+        <p>&copy; 2026 Putra Panel Store. All rights reserved.</p>
+    </footer>
+
+    <!-- Script Integrasi WhatsApp -->
+    <script>
+        const NOMOR_WA = "6285789797426"; 
+
+        function orderWA(namaPaket, harga) {
+            if (NOMOR_WA === "628xxxxxxxxxx" || NOMOR_WA === "") {
+                alert("Harap atur nomor WhatsApp terlebih dahulu di file index.html!");
+                return;
+            }
+
+            const pesan = `Halo Admin Putra, saya mau beli Panel Pterodactyl:\n\n` +
+                          `• *Paket:* ${namaPaket}\n` +
+                          `• *Harga:* ${harga}\n\n` +
+                          `Mohon berikan detail pembayaran (QRIS/Transfer Bank). Terima kasih!`;
+
+            const url = `https://wa.me/${NOMOR_WA}?text=${encodeURIComponent(pesan)}`;
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>
