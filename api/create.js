@@ -5,7 +5,8 @@ module.exports = async (req, res) => {
         return res.status(405).json({ success: false, message: 'Method not allowed' });
     }
 
-    const { username, whatsapp, specs, dockerImage } = req.body;
+    // Input dockerImage dari body dihapus, sistem yang menentukan otomatis
+    const { username, whatsapp, specs } = req.body;
 
     if (!username || !whatsapp || !specs) {
         return res.status(400).json({ success: false, message: 'Data tidak lengkap!' });
@@ -14,7 +15,7 @@ module.exports = async (req, res) => {
     const PANEL_URL = "https://thepanel.putranasution.web.id";
     const PLTA_KEY  = "ptla_ClbL66HqYT3U2BfcUsQwydERZiW5yzgSVjFxBBBRVZO"; 
 
-    // Pengaturan spesifikasi dari 1GB sampai 8GB
+    // Pengaturan spesifikasi RAM dari 1GB sampai 8GB
     let ram = 1024, cpu = 50, disk = 10240;
     if (specs === "1GB") { ram = 1024; cpu = 50; disk = 10240; }
     else if (specs === "2GB") { ram = 2048; cpu = 100; disk = 20480; }
@@ -29,7 +30,9 @@ module.exports = async (req, res) => {
     const EGG_ID = 16;  
     const NODE_ID = 1; 
 
-    const selectedDocker = dockerImage || "ghcr.io/parkervcp/yolks:nodejs_23";
+    // Docker diatur secara otomatis oleh sistem (aman dan terkunci)
+    const fixedDocker = "ghcr.io/parkervcp/yolks:nodejs_23";
+
     const randomPassword = "P" + Math.floor(1000 + Math.random() * 9000) + "@" + Math.random().toString(36).substring(2, 6);
     const email = username.toLowerCase() + "@autopanel.com";
 
@@ -70,13 +73,13 @@ module.exports = async (req, res) => {
             });
         }
 
-        // 2. Buat Server Baru
+        // 2. Buat Server Baru menggunakan Docker otomatis
         const serverPayload = {
             name: `${username} Server`,
             user: clientId,
             nest: NEST_ID,
             egg: EGG_ID,
-            docker_image: selectedDocker,
+            docker_image: fixedDocker,
             startup: startupCommand,
             limits: { memory: ram, swap: 0, disk: disk, io: 500, cpu: cpu },
             feature_limits: { databases: 1, backups: 1, allocations: 1 },
@@ -116,7 +119,6 @@ module.exports = async (req, res) => {
                 whatsapp: whatsapp
             });
         } else {
-            // Mengambil pesan error detail dari Pterodactyl agar tampil di web
             let errorDetail = "Unknown error";
             if (serverData.errors && serverData.errors.length > 0) {
                 errorDetail = serverData.errors.map(err => `${err.detail} (${err.code})`).join(', ');
