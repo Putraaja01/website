@@ -5,7 +5,6 @@ module.exports = async (req, res) => {
         return res.status(405).json({ success: false, message: 'Method not allowed' });
     }
 
-    // Input dockerImage dari body dihapus, sistem yang menentukan otomatis
     const { username, whatsapp, specs } = req.body;
 
     if (!username || !whatsapp || !specs) {
@@ -15,22 +14,21 @@ module.exports = async (req, res) => {
     const PANEL_URL = "https://thepanel.putranasution.web.id";
     const PLTA_KEY  = "ptla_ClbL66HqYT3U2BfcUsQwydERZiW5yzgSVjFxBBBRVZO"; 
 
-    // Pengaturan spesifikasi RAM dari 1GB sampai 8GB
     let ram = 1024, cpu = 50, disk = 10240;
-    if (specs === "1GB") { ram = 1024; cpu = 50; disk = 10240; }
-    else if (specs === "2GB") { ram = 2048; cpu = 100; disk = 20480; }
-    else if (specs === "3GB") { ram = 3072; cpu = 150; disk = 30720; }
-    else if (specs === "4GB") { ram = 4096; cpu = 200; disk = 40960; }
-    else if (specs === "5GB") { ram = 5120; cpu = 250; disk = 51200; }
-    else if (specs === "6GB") { ram = 6144; cpu = 300; disk = 61440; }
-    else if (specs === "7GB") { ram = 7168; cpu = 350; disk = 71680; }
-    else if (specs === "8GB") { ram = 8192; cpu = 400; disk = 81920; }
+    const cleanSpec = specs.toUpperCase();
+    
+    if (cleanSpec === "1GB") { ram = 1024; cpu = 50; disk = 10240; }
+    else if (cleanSpec === "2GB") { ram = 2048; cpu = 100; disk = 20480; }
+    else if (cleanSpec === "3GB") { ram = 3072; cpu = 150; disk = 30720; }
+    else if (cleanSpec === "4GB") { ram = 4096; cpu = 200; disk = 40960; }
+    else if (cleanSpec === "5GB") { ram = 5120; cpu = 250; disk = 51200; }
+    else if (cleanSpec === "6GB") { ram = 6144; cpu = 300; disk = 61440; }
+    else if (cleanSpec === "7GB") { ram = 7168; cpu = 350; disk = 71680; }
+    else if (cleanSpec === "8GB") { ram = 8192; cpu = 400; disk = 81920; }
 
     const NEST_ID = 5; 
     const EGG_ID = 16;  
     const NODE_ID = 1; 
-
-    // Docker diatur secara otomatis oleh sistem (aman dan terkunci)
     const fixedDocker = "ghcr.io/parkervcp/yolks:nodejs_23";
 
     const randomPassword = "P" + Math.floor(1000 + Math.random() * 9000) + "@" + Math.random().toString(36).substring(2, 6);
@@ -39,7 +37,6 @@ module.exports = async (req, res) => {
     const startupCommand = 'if [[ -d .git ]] && [[ {{AUTO_UPDATE}} == "1" ]]; then git pull; fi; if [[ ! -z ${NODE_PACKAGES} ]]; then /usr/local/bin/npm install ${NODE_PACKAGES}; fi; if [[ ! -z${UNNODE_PACKAGES} ]]; then /usr/local/bin/npm uninstall ${UNNODE_PACKAGES}; fi; if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; if [[ ! -z${CUSTOM_ENVIRONMENT_VARIABLES} ]]; then vars=$(echo${CUSTOM_ENVIRONMENT_VARIABLES} | tr ";" "\\n"); for line in $vars; do export $line; done fi; /usr/local/bin/${CMD_RUN};';
 
     try {
-        // 1. Buat User Baru
         const userRes = await fetch(`${PANEL_URL}/api/application/users`, {
             method: 'POST',
             headers: {
@@ -73,7 +70,6 @@ module.exports = async (req, res) => {
             });
         }
 
-        // 2. Buat Server Baru menggunakan Docker otomatis
         const serverPayload = {
             name: `${username} Server`,
             user: clientId,
