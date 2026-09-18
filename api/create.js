@@ -14,7 +14,7 @@ module.exports = async (req, res) => {
     const PANEL_URL = "https://thepanel.putranasution.web.id";
     const PLTA_KEY  = "ptla_ClbL66HqYT3U2BfcUsQwydERZiW5yzgSVjFxBBBRVZO"; 
 
-    // Pengaturan spesifikasi dari 1GB sampai 8GB (Unlimited dihapus)
+    // Pengaturan spesifikasi dari 1GB sampai 8GB
     let ram = 1024, cpu = 50, disk = 10240;
     if (specs === "1GB") { ram = 1024; cpu = 50; disk = 10240; }
     else if (specs === "2GB") { ram = 2048; cpu = 100; disk = 20480; }
@@ -116,7 +116,17 @@ module.exports = async (req, res) => {
                 whatsapp: whatsapp
             });
         } else {
-            return res.status(400).json({ success: false, message: 'Gagal membuat server', debug: serverData });
+            // Mengambil pesan error detail dari Pterodactyl agar tampil di web
+            let errorDetail = "Unknown error";
+            if (serverData.errors && serverData.errors.length > 0) {
+                errorDetail = serverData.errors.map(err => `${err.detail} (${err.code})`).join(', ');
+            }
+            
+            return res.status(400).json({
+                success: false,
+                message: 'Gagal membuat server: ' + errorDetail,
+                debug: serverData
+            });
         }
 
     } catch (error) {
