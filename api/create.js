@@ -5,7 +5,7 @@ module.exports = async (req, res) => {
         return res.status(405).json({ success: false, message: 'Method not allowed' });
     }
 
-    const { username, whatsapp, specs } = req.body;
+    const { username, whatsapp, specs, dockerImage } = req.body;
 
     if (!username || !whatsapp || !specs) {
         return res.status(400).json({ success: false, message: 'Data tidak lengkap!' });
@@ -22,6 +22,9 @@ module.exports = async (req, res) => {
     const NEST_ID = 5; 
     const EGG_ID = 16;  
     const NODE_ID = 1; 
+
+    // User bisa memilih docker image sendiri, jika kosong gunakan default bawaan egg
+    const selectedDocker = dockerImage || "ghcr.io/parkervcp/yolks:nodejs_23";
 
     const randomPassword = "P" + Math.floor(1000 + Math.random() * 9000) + "@" + Math.random().toString(36).substring(2, 6);
     const email = username.toLowerCase() + "@autopanel.com";
@@ -61,14 +64,14 @@ module.exports = async (req, res) => {
             });
         }
 
-        // 2. Buat Server Baru
+        // 2. Buat Server Baru (Startup dikosongkan/tidak dipaksa agar mengikuti default bawaan Egg)
         const serverPayload = {
             name: `${username} Server`,
             user: clientId,
             nest: NEST_ID,
             egg: EGG_ID,
-            docker_image: "ghcr.io/pterodactyl/yolks:nodejs_18",
-            startup: "npm start",
+            docker_image: selectedDocker,
+            startup: "", // Dikosongkan agar Pterodactyl otomatis menggunakan startup command bawaan dari Egg
             limits: { memory: ram, swap: 0, disk: disk, io: 500, cpu: cpu },
             feature_limits: { databases: 1, backups: 1, allocations: 1 },
             deploy: {
@@ -82,8 +85,7 @@ module.exports = async (req, res) => {
                 "USER_UPLOAD": "0",
                 "AUTO_UPDATE": "0",
                 "MAIN_FILE": "index.js",
-                "CMD_RUN": "npm start",
-                "COMMAND_RUN": "npm start"
+                "CMD_RUN": "index.js"
             }
         };
 
