@@ -61,7 +61,7 @@ module.exports = async (req, res) => {
             });
         }
 
-        // 2. Buat Server Baru
+        // 2. Buat Server Baru (Menggunakan feature_limits allocations agar otomatis mengambil port kosong)
         const serverPayload = {
             name: `${username} Server`,
             user: clientId,
@@ -71,8 +71,14 @@ module.exports = async (req, res) => {
             startup: "npm start",
             limits: { memory: ram, swap: 0, disk: disk, io: 500, cpu: cpu },
             feature_limits: { databases: 1, backups: 1, allocations: 1 },
+            deploy: {
+                location_ids: [],
+                dedicated_ip: false,
+                port_range: []
+            },
             allocation: {
-                default: parseInt(NODE_ID)
+                default: null,
+                additional: []
             },
             environment: {
                 "INST": "npm",
@@ -81,6 +87,16 @@ module.exports = async (req, res) => {
                 "MAIN_FILE": "index.js"
             }
         };
+
+        // Mengatur node dan automatic allocation lewat parameter deploy agar Pterodactyl memilih port bebas yang kosong
+        serverPayload.deploy = {
+            node_ids: [parseInt(NODE_ID)],
+            locations: [],
+            dedicated_ip: false,
+            port_range: []
+        };
+        // Hapus properti allocation manual agar panel otomatis mengisinya dari node_ids
+        delete serverPayload.allocation;
 
         const serverRes = await fetch(`${PANEL_URL}/api/application/servers`, {
             method: 'POST',
