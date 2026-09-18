@@ -25,7 +25,7 @@ module.exports = async (req, res) => {
     else if (specs === "unlimited") { ram = 0; cpu = 0; disk = 0; }
 
     const NEST_ID = 5; // Sesuaikan Nest ID Anda
-    const EGG_ID = 1;  // Sesuaikan ID Egg Anda
+    const EGG_ID = 16;  // Sesuaikan ID Egg Anda
     const NODE_ID = 1; // Sesuaikan ID Node/Wings Anda
 
     const randomPassword = "P" + Math.floor(1000 + Math.random() * 9000) + "@" + Math.random().toString(36).substring(2, 6);
