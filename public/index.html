@@ -3,224 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pterodactyl Panel - Premium Order</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <title>Premium Pterodactyl Auto-Create</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        :root {
-            --bg-color: #0f172a;
-            --card-bg: rgba(30, 41, 59, 0.7);
-            --primary: #6366f1;
-            --primary-hover: #4f46e5;
-            --text-color: #f8fafc;
-            --text-muted: #94a3b8;
-            --border-color: rgba(255, 255, 255, 0.1);
-            --accent: #10b981;
-        }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+        /* Desain Mewah Glassmorphism */
         body {
-            background-color: var(--bg-color);
-            background-image: radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%), radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.1) 0px, transparent 50%);
-            color: var(--text-color); min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between;
+            background: radial-gradient(circle at top left, #1f1c2c, #928DAB);
+            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+            color: #fff;
         }
-        .marquee-container { background: linear-gradient(90deg, var(--primary), var(--accent)); color: white; padding: 10px 0; font-weight: 500; font-size: 14px; overflow: hidden; white-space: nowrap; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
-        .container { max-width: 600px; margin: 30px auto; padding: 20px; width: 100%; }
-        .card { background: var(--card-bg); backdrop-filter: blur(12px); border: 1px solid var(--border-color); border-radius: 16px; padding: 30px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3); margin-bottom: 20px; }
-        .card-header { text-align: center; margin-bottom: 25px; }
-        .card-header h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; background: linear-gradient(to right, #818cf8, #34d399); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .card-header p { color: var(--text-muted); font-size: 14px; }
-        .form-group { margin-bottom: 20px; }
-        .form-label { display: block; font-size: 14px; font-weight: 500; margin-bottom: 8px; color: var(--text-color); }
-        .form-control { width: 100%; padding: 12px 16px; background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border-color); border-radius: 8px; color: var(--text-color); font-size: 14px; }
-        .form-control:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2); }
-        .btn { width: 100%; padding: 12px; background: linear-gradient(135deg, var(--primary), var(--primary-hover)); color: white; border: none; border-radius: 8px; font-weight: 600; font-size: 15px; cursor: pointer; box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4); }
-        .btn-success { background: linear-gradient(135deg, #10b981, #059669); }
-        .credential-box { background: rgba(15, 23, 42, 0.85); border: 1px dashed var(--accent); border-radius: 10px; padding: 15px; margin-top: 20px; }
-        .credential-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-size: 13px; }
-        .credential-label { color: var(--text-muted); font-weight: 500; }
-        .credential-value { color: #34d399; font-family: monospace; background: rgba(255, 255, 255, 0.05); padding: 4px 8px; border-radius: 4px; }
-        .btn-copy { background: var(--primary); color: white; border: none; padding: 6px 12px; border-radius: 6px; font-size: 12px; cursor: pointer; width: 100%; margin-top: 10px; }
-        .admin-nav { text-align: center; margin-top: 15px; }
-        .admin-nav button { background: none; border: none; color: var(--text-muted); font-size: 13px; cursor: pointer; text-decoration: underline; }
-        .hidden { display: none; }
-        footer { text-align: center; padding: 20px; color: var(--text-muted); font-size: 12px; border-top: 1px solid var(--border-color); }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        input[type=range] {
+            accent-color: #a855f7; /* Warna ungu mewah pada slider */
+        }
     </style>
 </head>
-<body>
+<body class="flex items-center justify-center p-4">
 
-    <div class="marquee-container">
-        <marquee behavior="scroll" direction="left">
-            🔥 Selamat Datang di Layanan Pembuatan Server Panel Otomatis! • Server langsung aktif otomatis di panel Pterodactyl! 🚀
-        </marquee>
-    </div>
+    <div class="glass-panel w-full max-w-lg rounded-2xl p-8 relative overflow-hidden">
+        <!-- Hiasan gradient -->
+        <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500 rounded-full blur-[80px] opacity-50"></div>
+        <div class="absolute bottom-0 left-0 w-32 h-32 bg-blue-500 rounded-full blur-[80px] opacity-50"></div>
 
-    <div class="container">
-        <!-- USER PANEL SECTION -->
-        <div id="userSection" class="card">
-            <div class="card-header">
-                <h1>Create Server Pterodactyl</h1>
-                <p>Isi data diri dan pilih spesifikasi panel impianmu</p>
+        <h2 class="text-3xl font-bold text-center mb-2 tracking-tight text-white/90">Premium Auto Panel</h2>
+        <p class="text-center text-sm text-gray-300 mb-8">Deploy server Anda dalam hitungan detik.</p>
+
+        <!-- Form Input -->
+        <form id="createForm" class="relative z-10 space-y-5">
+            <div>
+                <label class="block text-sm text-gray-300 mb-1">Username Panel</label>
+                <input type="text" id="username" required placeholder="Contoh: putranasution"
+                    class="w-full bg-black/30 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-purple-500 transition-colors">
             </div>
-            <form id="orderForm" onsubmit="handleUserSubmit(event)">
-                <div class="form-group">
-                    <label class="form-label"><i class="fa-solid fa-user"></i> Username Panel</label>
-                    <input type="text" class="form-control" id="username" placeholder="Masukkan username unik..." required>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label"><i class="fa-brands fa-whatsapp"></i> Nomor WhatsApp</label>
-                    <input type="tel" class="form-control" id="whatsapp" placeholder="Contoh: 6281234567890" required>
-                </div>
 
-                <div class="form-group">
-                    <label class="form-label"><i class="fa-solid fa-server"></i> Pilih Spesifikasi Panel</label>
-                    <select class="form-control" id="specs" required>
-                        <option value="" disabled selected>-- Pilih RAM & CPU --</option>
-                        <option value="1GB">RAM 1 GB - CPU 50% (Basic)</option>
-                        <option value="2GB">RAM 2 GB - CPU 100% (Standard)</option>
-                        <option value="4GB">RAM 4 GB - CPU 200% (Pro)</option>
-                        <option value="unlimited">RAM Unlimited - CPU Unlimited (VIP)</option>
-                    </select>
-                </div>
-
-                <button type="submit" class="btn" id="submitBtn">Buat Server Sekarang</button>
-            </form>
-
-            <div id="userResultCard" class="credential-box hidden">
-                <h3 style="font-size: 15px; color: var(--text-color); margin-bottom: 10px; text-align: center;"><i class="fa-solid fa-circle-check" style="color: var(--accent);"></i> Server Berhasil Dibuat di VPS!</h3>
-                <div class="credential-item">
-                    <span class="credential-label">URL Panel:</span>
-                    <span class="credential-value" id="resUrl">-</span>
-                </div>
-                <div class="credential-item">
-                    <span class="credential-label">Username:</span>
-                    <span class="credential-value" id="resUsername">-</span>
-                </div>
-                <div class="credential-item">
-                    <span class="credential-label">Password:</span>
-                    <span class="credential-value" id="resPassword">-</span>
-                </div>
-                <div class="credential-item">
-                    <span class="credential-label">Durasi Aktif:</span>
-                    <span class="credential-value">3 Hari</span>
-                </div>
-                <button class="btn-copy" onclick="copyCredentials()"><i class="fa-solid fa-copy"></i> Salin Kredensial Login</button>
+            <div>
+                <label class="block text-sm text-gray-300 mb-1">Nomor WhatsApp</label>
+                <input type="number" id="whatsapp" required placeholder="Contoh: 628123456789"
+                    class="w-full bg-black/30 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-purple-500 transition-colors">
             </div>
+
+            <div>
+                <label class="block text-sm text-gray-300 mb-1">Docker Image (Opsional)</label>
+                <input type="text" id="dockerImage" placeholder="Biarkan kosong untuk default"
+                    class="w-full bg-black/30 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-purple-500 transition-colors">
+            </div>
+
+            <!-- Fitur Gulir (Slider) Spesifikasi -->
+            <div>
+                <label class="block text-sm text-gray-300 mb-2 flex justify-between">
+                    <span>Spesifikasi Server</span>
+                    <span id="specLabel" class="font-bold text-purple-400">1GB</span>
+                </label>
+                <input type="range" id="specSlider" min="0" max="4" step="1" value="0" class="w-full cursor-pointer h-2 bg-gray-700 rounded-lg appearance-none">
+                <div class="flex justify-between text-xs text-gray-400 mt-2">
+                    <span>1GB</span><span>2GB</span><span>4GB</span><span>8GB</span><span>Unli</span>
+                </div>
+            </div>
+
+            <button type="submit" id="submitBtn" class="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white font-bold py-3 px-4 rounded-lg shadow-lg transform hover:scale-[1.02] transition-all">
+                Buat Server Sekarang
+            </button>
+        </form>
+
+        <!-- Modal Hasil & Tombol WA -->
+        <div id="resultBox" class="hidden mt-6 bg-black/40 border border-purple-500/30 rounded-xl p-5 relative z-10 text-center">
+            <h3 class="text-green-400 font-bold text-lg mb-2">🎉 Server Berhasil Dibuat!</h3>
+            <p class="text-sm text-gray-300 mb-4">Simpan detail login Anda. Jangan sampai hilang!</p>
             
-            <div class="admin-nav">
-                <button onclick="requestAdminAccess()">Masuk ke Panel Admin</button>
-            </div>
-        </div>
-
-        <!-- ADMIN PANEL SECTION (Terkunci) -->
-        <div id="adminSection" class="card hidden">
-            <div class="card-header">
-                <h1>Admin Control Panel</h1>
-                <p>Kelola perpanjangan masa aktif server</p>
-            </div>
-            <form id="adminForm" onsubmit="handleAdminAction(event)">
-                <div class="form-group">
-                    <label class="form-label">Perpanjang Server (Username / ID)</label>
-                    <input type="text" class="form-control" id="adminExtendTarget" placeholder="Masukkan Username Target">
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Tambah Durasi (Maksimal 3 Hari)</label>
-                    <input type="number" class="form-control" id="adminDuration" min="1" max="3" value="3">
-                </div>
-
-                <button type="submit" class="btn btn-success">Proses Perpanjangan</button>
-            </form>
-
-            <div class="admin-nav">
-                <button onclick="backToUser()">Kembali ke Menu User</button>
-            </div>
+            <a href="#" id="waButton" target="_blank" class="inline-flex items-center justify-center w-full bg-[#25D366] hover:bg-[#20b858] text-white font-bold py-3 px-4 rounded-lg shadow-lg transition-all">
+                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                Simpan Detail ke WhatsApp Saya
+            </a>
         </div>
     </div>
-
-    <footer>
-        &copy; 2026 Pterodactyl Automation Panel. All Rights Reserved.
-    </footer>
 
     <script>
-        function requestAdminAccess() {
-            let password = prompt("Masukkan Kata Sandi Admin:");
-            if (password === "admin123") {
-                document.getElementById('userSection').classList.add('hidden');
-                document.getElementById('adminSection').classList.remove('hidden');
-                alert("Akses Admin Diberikan!");
-            } else if (password !== null) {
-                alert("Kata sandi salah!");
-            }
-        }
+        // Logika Slider
+        const specSlider = document.getElementById('specSlider');
+        const specLabel = document.getElementById('specLabel');
+        const specsMap = ['1GB', '2GB', '4GB', '8GB', 'unlimited'];
+        let selectedSpec = '1GB';
 
-        function backToUser() {
-            document.getElementById('adminSection').classList.add('hidden');
-            document.getElementById('userSection').classList.remove('hidden');
-        }
+        specSlider.addEventListener('input', (e) => {
+            selectedSpec = specsMap[e.target.value];
+            specLabel.innerText = selectedSpec.toUpperCase();
+        });
 
-        async function handleUserSubmit(event) {
-            event.preventDefault();
-            let username = document.getElementById('username').value;
-            let whatsapp = document.getElementById('whatsapp').value;
-            let specs = document.getElementById('specs').value;
-            let btn = document.getElementById('submitBtn');
+        // Logika Form Submit
+        document.getElementById('createForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
 
-            btn.innerText = "Memproses ke VPS...";
-            btn.disabled = true;
-
-            try {
-                // Mengirim request ke Vercel Serverless Function (/api/create)
-                let response = await fetch('/api/create', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ username, whatsapp, specs })
-                });
-
-                let result = await response.json();
-
-                if (result.success) {
-                    document.getElementById('resUrl').innerText = result.panel_url;
-                    document.getElementById('resUsername').innerText = result.username;
-                    document.getElementById('resPassword').innerText = result.password;
-                    document.getElementById('userResultCard').classList.remove('hidden');
-                    alert("Sukses! Server berhasil diciptakan di panel VPS.");
-                } else {
-                    alert("Gagal: " + (result.message || "Terjadi kesalahan."));
-                }
-            } catch (error) {
-                alert("Terjadi kesalahan jaringan.");
-            } finally {
-                btn.innerText = "Buat Server Sekarang";
-                btn.disabled = false;
-            }
-        }
-
-        function handleAdminAction(event) {
-            event.preventDefault();
-            let target = document.getElementById('adminExtendTarget').value;
-            let duration = document.getElementById('adminDuration').value;
-
-            if (duration > 3) {
-                alert("Durasi maksimal sistem adalah 3 hari!");
+            // Pengecekan 1 Perangkat 1 Kali (Local Storage)
+            if (localStorage.getItem('server_created') === 'true') {
+                alert("Akses Ditolak: Anda sudah pernah membuat server dari perangkat ini.");
                 return;
             }
 
-            alert(`Berhasil memperpanjang server "${target}" selama ${duration} hari.`);
-            backToUser();
-        }
+            const username = document.getElementById('username').value;
+            let whatsapp = document.getElementById('whatsapp').value;
+            const dockerImage = document.getElementById('dockerImage').value;
+            const submitBtn = document.getElementById('submitBtn');
+            const resultBox = document.getElementById('resultBox');
+            const waButton = document.getElementById('waButton');
 
-        function copyCredentials() {
-            let url = document.getElementById('resUrl').innerText;
-            let uname = document.getElementById('resUsername').innerText;
-            let pass = document.getElementById('resPassword').innerText;
-            
-            let textToCopy = `*[ PTERODACTYL PANEL CREDENTIALS ]*\nURL: ${url}\nUsername: ${uname}\nPassword: ${pass}\nDurasi: 3 Hari`;
-            navigator.clipboard.writeText(textToCopy).then(() => {
-                alert("Kredensial berhasil disalin!");
-            });
-        }
+            // Format nomor WA jadi 62xxx
+            if(whatsapp.startsWith('0')) whatsapp = '62' + whatsapp.substring(1);
+
+            submitBtn.innerText = "Memproses...";
+            submitBtn.disabled = true;
+
+            try {
+                const response = await fetch('/api/create', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, whatsapp, specs: selectedSpec, dockerImage })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    // Kunci Perangkat agar tidak bisa bikin lagi
+                    localStorage.setItem('server_created', 'true');
+
+                    // Sembunyikan form
+                    document.getElementById('createForm').style.display = 'none';
+                    resultBox.classList.remove('hidden');
+
+                    // Buat Pesan WhatsApp
+                    const waPesan = `*BERHASIL MEMBUAT SERVER!* %0A%0A*Panel URL:* ${data.panel_url} %0A*Username:* ${data.username} %0A*Password:* ${data.password} %0A*Spesifikasi:* ${selectedSpec.toUpperCase()} %0A%0A_Pesan ini dikirim otomatis oleh sistem. Simpan baik-baik!_`;
+                    
+                    // Set Link Tombol WA ke nomor user yang diinput
+                    waButton.href = `https://wa.me/${whatsapp}?text=${waPesan}`;
+                } else {
+                    alert('Gagal: ' + data.message);
+                    submitBtn.innerText = "Buat Server Sekarang";
+                    submitBtn.disabled = false;
+                }
+            } catch (error) {
+                alert('Terjadi kesalahan koneksi.');
+                submitBtn.innerText = "Buat Server Sekarang";
+                submitBtn.disabled = false;
+            }
+        });
     </script>
 </body>
 </html>
