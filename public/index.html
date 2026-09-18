@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pterodactyl Panel - Premium Order</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --primary: #6366f1;
+            --primary-hover: #4f46e5;
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --accent: #10b981;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+        body {
+            background-color: var(--bg-color);
+            background-image: radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%), radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.1) 0px, transparent 50%);
+            color: var(--text-color); min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between;
+        }
+        .marquee-container { background: linear-gradient(90deg, var(--primary), var(--accent)); color: white; padding: 10px 0; font-weight: 500; font-size: 14px; overflow: hidden; white-space: nowrap; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+        .container { max-width: 600px; margin: 30px auto; padding: 20px; width: 100%; }
+        .card { background: var(--card-bg); backdrop-filter: blur(12px); border: 1px solid var(--border-color); border-radius: 16px; padding: 30px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3); margin-bottom: 20px; }
+        .card-header { text-align: center; margin-bottom: 25px; }
+        .card-header h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; background: linear-gradient(to right, #818cf8, #34d399); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .card-header p { color: var(--text-muted); font-size: 14px; }
+        .form-group { margin-bottom: 20px; }
+        .form-label { display: block; font-size: 14px; font-weight: 500; margin-bottom: 8px; color: var(--text-color); }
+        .form-control { width: 100%; padding: 12px 16px; background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border-color); border-radius: 8px; color: var(--text-color); font-size: 14px; }
+        .form-control:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2); }
+        .btn { width: 100%; padding: 12px; background: linear-gradient(135deg, var(--primary), var(--primary-hover)); color: white; border: none; border-radius: 8px; font-weight: 600; font-size: 15px; cursor: pointer; box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4); }
+        .btn-success { background: linear-gradient(135deg, #10b981, #059669); }
+        .credential-box { background: rgba(15, 23, 42, 0.85); border: 1px dashed var(--accent); border-radius: 10px; padding: 15px; margin-top: 20px; }
+        .credential-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-size: 13px; }
+        .credential-label { color: var(--text-muted); font-weight: 500; }
+        .credential-value { color: #34d399; font-family: monospace; background: rgba(255, 255, 255, 0.05); padding: 4px 8px; border-radius: 4px; }
+        .btn-copy { background: var(--primary); color: white; border: none; padding: 6px 12px; border-radius: 6px; font-size: 12px; cursor: pointer; width: 100%; margin-top: 10px; }
+        .admin-nav { text-align: center; margin-top: 15px; }
+        .admin-nav button { background: none; border: none; color: var(--text-muted); font-size: 13px; cursor: pointer; text-decoration: underline; }
+        .hidden { display: none; }
+        footer { text-align: center; padding: 20px; color: var(--text-muted); font-size: 12px; border-top: 1px solid var(--border-color); }
+    </style>
+</head>
+<body>
+
+    <div class="marquee-container">
+        <marquee behavior="scroll" direction="left">
+            🔥 Selamat Datang di Layanan Pembuatan Server Panel Otomatis! • Server langsung aktif otomatis di panel Pterodactyl! 🚀
+        </marquee>
+    </div>
+
+    <div class="container">
+        <!-- USER PANEL SECTION -->
+        <div id="userSection" class="card">
+            <div class="card-header">
+                <h1>Create Server Pterodactyl</h1>
+                <p>Isi data diri dan pilih spesifikasi panel impianmu</p>
+            </div>
+            <form id="orderForm" onsubmit="handleUserSubmit(event)">
+                <div class="form-group">
+                    <label class="form-label"><i class="fa-solid fa-user"></i> Username Panel</label>
+                    <input type="text" class="form-control" id="username" placeholder="Masukkan username unik..." required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label"><i class="fa-brands fa-whatsapp"></i> Nomor WhatsApp</label>
+                    <input type="tel" class="form-control" id="whatsapp" placeholder="Contoh: 6281234567890" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label"><i class="fa-solid fa-server"></i> Pilih Spesifikasi Panel</label>
+                    <select class="form-control" id="specs" required>
+                        <option value="" disabled selected>-- Pilih RAM & CPU --</option>
+                        <option value="1GB">RAM 1 GB - CPU 50% (Basic)</option>
+                        <option value="2GB">RAM 2 GB - CPU 100% (Standard)</option>
+                        <option value="4GB">RAM 4 GB - CPU 200% (Pro)</option>
+                        <option value="unlimited">RAM Unlimited - CPU Unlimited (VIP)</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn" id="submitBtn">Buat Server Sekarang</button>
+            </form>
+
+            <div id="userResultCard" class="credential-box hidden">
+                <h3 style="font-size: 15px; color: var(--text-color); margin-bottom: 10px; text-align: center;"><i class="fa-solid fa-circle-check" style="color: var(--accent);"></i> Server Berhasil Dibuat di VPS!</h3>
+                <div class="credential-item">
+                    <span class="credential-label">URL Panel:</span>
+                    <span class="credential-value" id="resUrl">-</span>
+                </div>
+                <div class="credential-item">
+                    <span class="credential-label">Username:</span>
+                    <span class="credential-value" id="resUsername">-</span>
+                </div>
+                <div class="credential-item">
+                    <span class="credential-label">Password:</span>
+                    <span class="credential-value" id="resPassword">-</span>
+                </div>
+                <div class="credential-item">
+                    <span class="credential-label">Durasi Aktif:</span>
+                    <span class="credential-value">3 Hari</span>
+                </div>
+                <button class="btn-copy" onclick="copyCredentials()"><i class="fa-solid fa-copy"></i> Salin Kredensial Login</button>
+            </div>
+            
+            <div class="admin-nav">
+                <button onclick="requestAdminAccess()">Masuk ke Panel Admin</button>
+            </div>
+        </div>
+
+        <!-- ADMIN PANEL SECTION (Terkunci) -->
+        <div id="adminSection" class="card hidden">
+            <div class="card-header">
+                <h1>Admin Control Panel</h1>
+                <p>Kelola perpanjangan masa aktif server</p>
+            </div>
+            <form id="adminForm" onsubmit="handleAdminAction(event)">
+                <div class="form-group">
+                    <label class="form-label">Perpanjang Server (Username / ID)</label>
+                    <input type="text" class="form-control" id="adminExtendTarget" placeholder="Masukkan Username Target">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Tambah Durasi (Maksimal 3 Hari)</label>
+                    <input type="number" class="form-control" id="adminDuration" min="1" max="3" value="3">
+                </div>
+
+                <button type="submit" class="btn btn-success">Proses Perpanjangan</button>
+            </form>
+
+            <div class="admin-nav">
+                <button onclick="backToUser()">Kembali ke Menu User</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 Pterodactyl Automation Panel. All Rights Reserved.
+    </footer>
+
+    <script>
+        function requestAdminAccess() {
+            let password = prompt("Masukkan Kata Sandi Admin:");
+            if (password === "admin123") {
+                document.getElementById('userSection').classList.add('hidden');
+                document.getElementById('adminSection').classList.remove('hidden');
+                alert("Akses Admin Diberikan!");
+            } else if (password !== null) {
+                alert("Kata sandi salah!");
+            }
+        }
+
+        function backToUser() {
+            document.getElementById('adminSection').classList.add('hidden');
+            document.getElementById('userSection').classList.remove('hidden');
+        }
+
+        async function handleUserSubmit(event) {
+            event.preventDefault();
+            let username = document.getElementById('username').value;
+            let whatsapp = document.getElementById('whatsapp').value;
+            let specs = document.getElementById('specs').value;
+            let btn = document.getElementById('submitBtn');
+
+            btn.innerText = "Memproses ke VPS...";
+            btn.disabled = true;
+
+            try {
+                // Mengirim request ke Vercel Serverless Function (/api/create)
+                let response = await fetch('/api/create', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, whatsapp, specs })
+                });
+
+                let result = await response.json();
+
+                if (result.success) {
+                    document.getElementById('resUrl').innerText = result.panel_url;
+                    document.getElementById('resUsername').innerText = result.username;
+                    document.getElementById('resPassword').innerText = result.password;
+                    document.getElementById('userResultCard').classList.remove('hidden');
+                    alert("Sukses! Server berhasil diciptakan di panel VPS.");
+                } else {
+                    alert("Gagal: " + (result.message || "Terjadi kesalahan."));
+                }
+            } catch (error) {
+                alert("Terjadi kesalahan jaringan.");
+            } finally {
+                btn.innerText = "Buat Server Sekarang";
+                btn.disabled = false;
+            }
+        }
+
+        function handleAdminAction(event) {
+            event.preventDefault();
+            let target = document.getElementById('adminExtendTarget').value;
+            let duration = document.getElementById('adminDuration').value;
+
+            if (duration > 3) {
+                alert("Durasi maksimal sistem adalah 3 hari!");
+                return;
+            }
+
+            alert(`Berhasil memperpanjang server "${target}" selama ${duration} hari.`);
+            backToUser();
+        }
+
+        function copyCredentials() {
+            let url = document.getElementById('resUrl').innerText;
+            let uname = document.getElementById('resUsername').innerText;
+            let pass = document.getElementById('resPassword').innerText;
+            
+            let textToCopy = `*[ PTERODACTYL PANEL CREDENTIALS ]*\nURL: ${url}\nUsername: ${uname}\nPassword: ${pass}\nDurasi: 3 Hari`;
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                alert("Kredensial berhasil disalin!");
+            });
+        }
+    </script>
+</body>
+</html>
