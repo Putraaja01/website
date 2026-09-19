@@ -1,9 +1,0 @@
-{
-  "name": "pterodactyl-order-panel",
-  "version": "1.0.0",
-  "description": "Auto Server Panel Pterodactyl",
-  "main": "index.js",
-  "dependencies": {
-    "node-fetch": "^2.6.7"
-  }
-}
