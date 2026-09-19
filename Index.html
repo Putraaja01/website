@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pterodactyl Panel Hosting - Cepat, Murah & Bergaransi</title>
+    <!-- Google Fonts & FontAwesome for Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-hover: #4338ca;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #06b6d4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
+
+        .btn-login {
+            background: rgba(79, 70, 229, 0.2);
+            color: var(--primary);
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 1px solid var(--primary);
+            transition: all 0.3s;
+        }
+
+        .btn-login:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        /* Hero Section */
+        header.hero {
+            padding: 160px 8% 100px 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .hero-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-content h1 span {
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 14px rgba(79, 70, 229, 0.4);
+            transition: background 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-hover);
+        }
+
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 12px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Features Section */
+        section {
+            padding: 80px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Pricing Section */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .pricing-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .pricing-card.popular {
+            border: 2px solid var(--primary);
+            box-shadow: 0 10px 30px rgba(79, 70, 229, 0.2);
+        }
+
+        .badge-popular {
+            position: absolute;
+            top: -15px;
+            right: 30px;
+            background: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border-radius: 20px;
+        }
+
+        .pricing-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin: 20px 0;
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: normal;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .pricing-features li {
+            margin-bottom: 12px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pricing-features li i {
+            color: #10b981;
+        }
+
+        .btn-order {
+            display: block;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+
+        .pricing-card.popular .btn-order {
+            background: var(--primary);
+            border: none;
+            color: white;
+        }
+
+        .pricing-card.popular .btn-order:hover {
+            background: var(--primary-hover);
+        }
+
+        .btn-order:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            background: #090d16;
+            padding: 40px 8%;
+            text-align: center;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Responsive */
+        @media(max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">
+            <i class="fa-solid fa-server"></i> Ptero<span>Cloud</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#fitur">Fitur</a></li>
+            <li><a href="#paket">Paket Panel</a></li>
+            <li><a href="#testimoni">Testimoni</a></li>
+            <li><a href="#kontak">Kontak</a></li>
+        </ul>
+        <a href="https://panel.domainanda.com" target="_blank" class="btn-login"><i class="fa-solid fa-right-to-left"></i> Login Panel</a>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Sewa Panel Pterodactyl <span>Tercepat & Stabil</span></h1>
+            <p>Solusi hosting game server dan bot WhatsApp/Discord terbaik dengan panel Pterodactyl. Anti-lag, uptime 99.9%, dan setup otomatis!</p>
+            <div class="hero-buttons">
+                <a href="#paket" class="btn-primary">Lihat Paket</a>
+                <a href="https://wa.me/6281234567890" target="_blank" class="btn-login"><i class="fa-brands fa-whatsapp"></i> Chat Admin</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80" alt="Server Pterodactyl">
+        </div>
+    </header>
+
+    <!-- FITUR SECTION -->
+    <section id="fitur">
+        <div class="section-title">
+            <h2>Kenapa Memilih Kami?</h2>
+            <p>Keunggulan layanan panel yang kami tawarkan untuk kenyamanan Anda</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fa-solid fa-gauge-high"></i>
+                <h3>Performa Tinggi</h3>
+                <p>Didukung hardware NVMe SSD kelas enterprise dan CPU berkecepatan tinggi.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h3>Anti DDOS Protection</h3>
+                <p>Server Anda aman dari serangan DDoS berkapasitas besar secara real-time.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-clock"></i>
+                <h3>Uptime 99.9%</h3>
+                <p>Server aktif 24/7 tanpa henti dengan jaringan berkecepatan stabil.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-headset"></i>
+                <h3>Support 24/7</h3>
+                <p>Tim admin siap membantu kendala konfigurasi panel atau server Anda kapan saja.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING SECTION -->
+    <section id="paket">
+        <div class="section-title">
+            <h2>Pilih Paket Panel Anda</h2>
+            <p>Tersedia berbagai pilihan kapasitas sesuai dengan kebutuhan server game atau bot Anda</p>
+        </div>
+        <div class="pricing-grid">
+            <!-- Paket 1 -->
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3>Paket Hemat</h3>
+                    <div class="price">Rp 10.000 <span>/ bulan</span></div>
+                </div>
+                <ul class="pricing-features">
+                    <li><i class="fa-solid fa-check"></i> RAM: 1 GB</li>
+                    <li><i class="fa-solid fa-check"></i> Disk: 10 GB NVMe</li>
+                    <li><i class="fa-solid fa-check"></i> CPU: 50%</li>
+                    <li><i class="fa-solid fa-check"></i> Cocok untuk Bot WA / MC Kecil</li>
+                </ul>
+                <a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20tertarik%20membeli%20Paket%20Hemat%20Pterodactyl" target="_blank" class="btn-order">Pesan Sekarang</a>
+            </div>
+
+            <!-- Paket 2 (Popular) -->
+            <div class="pricing-card popular">
+                <div class="badge-popular">TERLARIS</div>
+                <div class="pricing-header">
+                    <h3>Paket Regular</h3>
+                    <div class="price">Rp 25.000 <span>/ bulan</span></div>
+                </div>
+                <ul class="pricing-features">
+                    <li><i class="fa-solid fa-check"></i> RAM: 4 GB</li>
+                    <li><i class="fa-solid fa-check"></i> Disk: 30 GB NVMe</li>
+                    <li><i class="fa-solid fa-check"></i> CPU: 150%</li>
+                    <li><i class="fa-solid fa-check"></i> Cocok untuk Game Server & Bot</li>
+                </ul>
+                <a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20tertarik%20membeli%20Paket%20Regular%20Pterodactyl" target="_blank" class="btn-order">Pesan Sekarang</a>
+            </div>
+
+            <!-- Paket 3 -->
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3>Paket Unlimited</h3>
+                    <div class="price">Rp 50.000 <span>/ bulan</span></div>
+                </div>
+                <ul class="pricing-features">
+                    <li><i class="fa-solid fa-check"></i> RAM: Unlimited*</li>
+                    <li><i class="fa-solid fa-check"></i> Disk: Unlimited*</li>
+                    <li><i class="fa-solid fa-check"></i> CPU: 400%</li>
+                    <li><i class="fa-solid fa-check"></i> Cocok untuk Komunitas Besar</li>
+                </ul>
+                <a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20tertarik%20membeli%20Paket%20Unlimited%20Pterodactyl" target="_blank" class="btn-order">Pesan Sekarang</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 PteroCloud. All rights reserved. Powered by Pterodactyl Panel.</p>
+    </footer>
+
+</body>
+</html>
