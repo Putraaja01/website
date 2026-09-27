@@ -1,0 +1,1627 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>JokiSosmed.id ⚡</title>
+
+<style>
+:root {
+    --primary: #7c3aed;
+    --secondary: #db2777;
+    --accent: #38bdf8;
+    --bg-main: #070711;
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:var(--bg-main);
+    color:#fff;
+    min-height:100vh;
+    transition: background 0.3s ease;
+}
+
+button{
+    border:0;
+    cursor:pointer;
+}
+
+/* ==========================================
+   BACKGROUND KELAS ATAS & MEWAH (OPENING)
+========================================== */
+
+#opening{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    background: 
+        radial-gradient(circle at 15% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 85% 80%, rgba(236, 72, 153, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at center, #0d0b1e 0%, #030307 100%);
+    background-color: #030307;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+}
+
+#opening::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: 
+        linear-gradient(rgba(139, 92, 246, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(139, 92, 246, 0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+    z-index: 1;
+    opacity: 0.7;
+}
+
+@keyframes luxuryGlow {
+    0% { transform: scale(1) translate(0, 0); opacity: 0.4; }
+    50% { transform: scale(1.2) translate(20px, -20px); opacity: 0.7; }
+    100% { transform: scale(1) translate(0, 0); opacity: 0.4; }
+}
+
+#opening::after {
+    content: "";
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.25) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    border-radius: 50%;
+    animation: luxuryGlow 8s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.openingContent{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    padding:30px;
+    width:100%;
+    max-width:450px;
+    background: rgba(13, 11, 26, 0.65);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    border-radius: 30px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.logo{
+    font-size:34px;
+    font-weight:900;
+    letter-spacing:2px;
+    text-shadow:
+        0 0 10px rgba(139, 92, 246, 0.8),
+        0 0 30px rgba(139, 92, 246, 0.5);
+}
+
+.logoSmall{
+    color:#c4b5fd;
+    font-size:12px;
+    letter-spacing:5px;
+    margin-top:6px;
+    margin-bottom:25px;
+    text-transform: uppercase;
+}
+
+/* ANIMASI WARNA PELANGI BERGERAK UNTUK TEKS KETIKAN */
+@keyframes rainbowTextFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.nameInput{
+    width: 100%;
+    padding: 15px;
+    border-radius: 16px;
+    border: 1px solid rgba(139, 92, 246, 0.4);
+    outline: none;
+    background: rgba(8, 8, 18, 0.95);
+    
+    /* Efek teks pelangi bergerak */
+    background-image: linear-gradient(270deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff, #ff0000);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbowTextFlow 6s ease infinite;
+
+    font-size: 16px;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.nameInput::placeholder {
+    color: #64748b;
+    font-weight: normal;
+    -webkit-text-fill-color: #64748b;
+}
+
+.nameInput:focus{
+    border-color: var(--primary);
+    box-shadow: 0 0 25px rgba(139, 92, 246, 0.4);
+    background-color: rgba(14, 14, 26, 1);
+}
+
+.enterBtn{
+    width: 100%;
+    padding: 16px 30px;
+    border-radius: 16px;
+    color: white;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    background: linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+    box-shadow: 0 10px 25px rgba(124, 58, 237, 0.4);
+    transition: all 0.3s ease;
+}
+
+.enterBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(124, 58, 237, 0.6);
+}
+
+.app{
+    max-width:520px;
+    margin:auto;
+    padding-bottom:50px;
+}
+
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:100;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:16px;
+    background:#070711dd;
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid #222238;
+}
+
+.brand-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand{
+    font-weight:900;
+    letter-spacing:1px;
+    font-size: 16px;
+}
+
+.userBadgeHeader {
+    font-size: 12px;
+    color: #ffffff;
+    font-weight: 900;
+    margin-top: 3px;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.settingsGearBtn {
+    background: rgba(139, 92, 246, 0.15);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    color: #c084fc;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.settingsGearBtn:hover {
+    background: var(--primary);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+}
+
+#settingsModal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(3, 3, 10, 0.85);
+    backdrop-filter: blur(10px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.settingsContent {
+    background: linear-gradient(145deg, #131124, #0a0a16);
+    border: 1px solid rgba(139, 92, 246, 0.4);
+    box-shadow: 0 0 40px rgba(139, 92, 246, 0.25);
+    width: 100%;
+    max-width: 400px;
+    border-radius: 24px;
+    padding: 24px;
+}
+
+.settingsContent h3 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.settingGroup {
+    margin-bottom: 18px;
+}
+
+.settingGroup label {
+    display: block;
+    font-size: 13px;
+    color: #94a3b8;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.colorPickerRow {
+    display: flex;
+    gap: 10px;
+}
+
+.colorOption {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: transform 0.2s;
+}
+
+.colorOption:hover {
+    transform: scale(1.1);
+}
+
+.closeSettings {
+    width: 100%;
+    padding: 12px;
+    background: var(--primary);
+    color: #fff;
+    font-weight: bold;
+    border-radius: 12px;
+    margin-top: 10px;
+}
+
+.hero{
+    margin:18px;
+    padding:25px;
+    border-radius:25px;
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(124, 58, 237, 0.3),
+            transparent 45%
+        ),
+        linear-gradient(145deg,#15152a,#0c0c18);
+    border:1px solid #292943;
+}
+
+.marqueeContainer {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+    margin-bottom: 12px;
+    background: transparent;
+    border: none;
+    padding: 4px 0;
+}
+
+.marqueeText {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 12s linear infinite;
+    color: #c084fc;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+@keyframes marquee {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}
+
+.hero p{
+    color:#aaa;
+    line-height:1.6;
+    font-size:13px;
+}
+
+.section{
+    padding:0 18px;
+    margin-top:25px;
+}
+
+.sectionTitle{
+    font-size:19px;
+    font-weight:800;
+    margin-bottom:14px;
+}
+
+.features{
+    display:grid;
+    gap:10px;
+}
+
+.feature{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    padding:15px;
+    background:#111120;
+    border:1px solid #24243b;
+    border-radius:15px;
+}
+
+.featureIcon{
+    font-size:22px;
+}
+
+.featureText strong{
+    display:block;
+    font-size:14px;
+    margin-bottom:3px;
+}
+
+.featureText span{
+    color:#888;
+    font-size:12px;
+}
+
+.platforms{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+}
+
+.platform{
+    padding:18px 10px;
+    border-radius:18px;
+    background:#111120;
+    border:1px solid #28283f;
+    color:#ddd;
+    text-align:center;
+    transition:.2s;
+}
+
+.platform:hover{
+    transform:translateY(-2px);
+}
+
+.platform.active{
+    border-color:var(--primary);
+    background:linear-gradient(
+        145deg,
+        #28113f,
+        #15101f
+    );
+    box-shadow:0 0 20px rgba(139, 92, 246, 0.3);
+}
+
+.platformIcon svg {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 8px;
+    fill: currentColor;
+    display: inline-block;
+}
+
+.platformName{
+    font-size:14px;
+    font-weight:bold;
+}
+
+.serviceBox{
+    margin-top:15px;
+    padding:17px;
+    border-radius:20px;
+    background:#10101e;
+    border:1px solid #25253c;
+}
+
+.serviceTitle{
+    color:#999;
+    font-size:13px;
+    margin-bottom:10px;
+}
+
+.services{
+    display:grid;
+    gap:8px;
+}
+
+.service{
+    padding:14px;
+    border-radius:12px;
+    background:#181827;
+    color:#ddd;
+    border:1px solid transparent;
+    text-align:left;
+}
+
+.service.active{
+    border-color:var(--primary);
+    color:#fff;
+}
+
+.customBox{
+    padding: 24px;
+    border-radius: 24px;
+    background: linear-gradient(145deg, #131124, #0a0a16);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.orderFormGroup {
+    margin-bottom: 18px;
+}
+
+.orderFormGroup:last-of-type {
+    margin-bottom: 0;
+}
+
+.label{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #cbd5e1;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+.label span.badge-hint {
+    font-size: 10px;
+    background: rgba(139, 92, 246, 0.2);
+    color: #c084fc;
+    padding: 2px 8px;
+    border-radius: 20px;
+    border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.inputWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input{
+    width: 100%;
+    padding: 16px 18px;
+    border-radius: 16px;
+    border: 1px solid #2a2a45;
+    outline: none;
+    background: #080812;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.input:focus{
+    border-color: var(--primary);
+    background: #0e0e1a;
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.25);
+}
+
+.payments{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 5px;
+}
+
+.payment{
+    position: relative;
+    padding: 16px;
+    border-radius: 16px;
+    background: #0d0d1a;
+    border: 1px solid #2a2a45;
+    color: #94a3b8;
+    text-align: left;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: all 0.25s ease;
+}
+
+.payment small {
+    font-size: 11px;
+    color: #64748b;
+    font-weight: normal;
+}
+
+.payment:hover {
+    border-color: rgba(139, 92, 246, 0.5);
+    background: #111122;
+}
+
+.payment.active{
+    border-color: var(--primary);
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(236, 72, 153, 0.05));
+    color: #fff;
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.2);
+}
+
+.payment.active small {
+    color: #c084fc;
+}
+
+.price{
+    margin: 20px 0;
+    padding: 18px;
+    border-radius: 18px;
+    background: rgba(8, 8, 16, 0.8);
+    border: 1px dashed rgba(139, 92, 246, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.priceInfoLeft small {
+    display: block;
+    color: #94a3b8;
+    font-size: 12px;
+    margin-bottom: 2px;
+}
+
+.priceInfoLeft span {
+    color: #f1f5f9;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.price strong{
+    color: var(--accent);
+    font-size: 24px;
+    font-weight: 900;
+    text-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+}
+
+.orderBtn{
+    width: 100%;
+    padding: 18px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: #fff;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    box-shadow: 0 10px 25px rgba(124, 58, 237, 0.4);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.orderBtn:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(124, 58, 237, 0.6);
+}
+
+#payModal{
+    position:fixed;
+    inset:0;
+    z-index:9998;
+    background:rgba(3, 3, 10, 0.85);
+    backdrop-filter:blur(10px);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    animation: fadeInModal 0.3s ease;
+}
+
+@keyframes fadeInModal {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.modalContent{
+    background:linear-gradient(145deg, #131124, #0a0a16);
+    border:1px solid rgba(139, 92, 246, 0.4);
+    box-shadow: 0 0 40px rgba(139, 92, 246, 0.25);
+    width:100%;
+    max-width:420px;
+    border-radius:24px;
+    padding:28px;
+    text-align:center;
+    position:relative;
+}
+
+.modalBadge{
+    display:inline-block;
+    padding:6px 14px;
+    background:rgba(139, 92, 246, 0.15);
+    color:#c084fc;
+    border:1px solid rgba(139, 92, 246, 0.3);
+    border-radius:30px;
+    font-size:11px;
+    font-weight:bold;
+    letter-spacing:1px;
+    margin-bottom:15px;
+    text-transform:uppercase;
+}
+
+.modalContent h2{
+    font-size:22px;
+    margin-bottom:5px;
+    color:#fff;
+    font-weight:800;
+}
+
+.modalSubtitle{
+    font-size:13px;
+    color:#94a3b8;
+    margin-bottom:20px;
+}
+
+.payInfoBox{
+    background:rgba(8, 8, 18, 0.7);
+    border:1px solid rgba(255, 255, 255, 0.08);
+    border-radius:16px;
+    padding:18px;
+    margin-bottom:20px;
+    text-align:left;
+}
+
+.payRow{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:12px;
+}
+
+.payRow:last-child{
+    margin-bottom:0;
+}
+
+.payRow span{
+    font-size:12px;
+    color:#94a3b8;
+}
+
+.payValueContainer{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.payRow strong{
+    color:#f8fafc;
+    font-size:15px;
+}
+
+.copyBtn{
+    background:rgba(139, 92, 246, 0.2);
+    color:#c084fc;
+    border:1px solid rgba(139, 92, 246, 0.4);
+    padding:4px 8px;
+    font-size:11px;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:0.2s;
+}
+
+.copyBtn:hover{
+    background:var(--primary);
+    color:#fff;
+}
+
+.dividerLine{
+    height:1px;
+    background:rgba(255, 255, 255, 0.08);
+    margin:12px 0;
+}
+
+.checkStatusBtn{
+    width:100%;
+    padding:16px;
+    border-radius:14px;
+    background:linear-gradient(135deg, #10b981, #059669);
+    color:#fff;
+    font-weight:bold;
+    font-size:14px;
+    box-shadow:0 0 20px rgba(16, 185, 129, 0.4);
+    transition:0.2s;
+}
+
+.checkStatusBtn:hover{
+    opacity:0.9;
+    transform:translateY(-1px);
+}
+
+.cancelModal{
+    background:transparent;
+    color:#94a3b8;
+    margin-top:15px;
+    font-size:13px;
+    cursor:pointer;
+    text-decoration:underline;
+}
+
+.packages{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+}
+
+.package{
+    padding:17px;
+    border-radius:18px;
+    background:#111120;
+    border:1px solid #26263c;
+}
+
+.package h3{
+    font-size:19px;
+    margin-bottom:5px;
+}
+
+.package p{
+    color:#999;
+    font-size:12px;
+    margin-bottom:12px;
+}
+
+.packagePrice{
+    color:#c084fc;
+    font-size:20px;
+    font-weight:bold;
+    margin-bottom:12px;
+}
+
+.package button{
+    width:100%;
+    padding:10px;
+    border-radius:10px;
+    background:#24243a;
+    color:#fff;
+}
+
+.note{
+    margin:30px 18px;
+    text-align:center;
+    color:#666;
+    font-size:11px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ==================================
+     OPENING / WELCOME (INPUT NAMA)
+================================== -->
+
+<div id="opening">
+    <div class="openingContent">
+        <div class="logo">
+            JokiSosmed.id ⚡
+        </div>
+        <div class="logoSmall">
+            SOCIAL MEDIA BOOSTER
+        </div>
+
+        <input
+            type="text"
+            id="visitorName"
+            class="nameInput"
+            placeholder="Masukkan Nama Anda di Sini..."
+        >
+
+        <button
+            class="enterBtn"
+            onclick="enterWebsite()">
+            MASUK WEBSITE
+        </button>
+    </div>
+</div>
+
+
+<!-- ==================================
+     MODAL PIN KHUSUS OWNER
+================================== -->
+<div id="ownerPinModal" style="position:fixed; inset:0; z-index:10000; background:rgba(3,3,10,0.9); backdrop-filter:blur(10px); display:none; align-items:center; justify-content:center; padding:20px;">
+    <div class="settingsContent" style="text-align:center;">
+        <h3>🔒 Keamanan Owner</h3>
+        <p style="font-size:12px; color:#94a3b8; margin-bottom:15px;">Menu ini khusus untuk Owner/Admin. Masukkan PIN akses:</p>
+        
+        <input type="password" id="ownerPinInput" class="input" placeholder="Masukkan PIN Owner..." style="text-align:center; margin-bottom:15px;" maxlength="6">
+        
+        <button class="enterBtn" onclick="verifyOwnerPin()" style="margin-bottom:10px;">BUKA PENGATURAN</button>
+        <button class="cancelModal" onclick="closeOwnerPinModal()">Batal</button>
+    </div>
+</div>
+
+
+<!-- ==================================
+     MODAL PENGATURAN OWNER
+================================== -->
+<div id="settingsModal">
+    <div class="settingsContent">
+        <h3>⚙️ Panel Kontrol Owner</h3>
+        
+        <div class="settingGroup">
+            <label>Pilih Tema Warna Utama Website:</label>
+            <div class="colorPickerRow">
+                <div class="colorOption" style="background:#7c3aed;" onclick="setTheme('#7c3aed', '#db2777', '#38bdf8')"></div>
+                <div class="colorOption" style="background:#3b82f6;" onclick="setTheme('#1d4ed8', '#06b6d4', '#60a5fa')"></div>
+                <div class="colorOption" style="background:#10b981;" onclick="setTheme('#047857', '#34d399', '#a7f3d0')"></div>
+                <div class="colorOption" style="background:#f59e0b;" onclick="setTheme('#d97706', '#ef4444', '#fde047')"></div>
+                <div class="colorOption" style="background:#ec4899;" onclick="setTheme('#be185d', '#8b5cf6', '#f472b6')"></div>
+            </div>
+        </div>
+
+        <div class="settingGroup">
+            <label>Musik Latar Belakang (BGM):</label>
+            <button class="settingsGearBtn" style="width:100%; justify-content:center;" onclick="toggleMusic()" id="musicToggleBtn">
+                🎵 Putar Musik Santai: OFF
+            </button>
+            <audio id="bgMusic" loop>
+                <source src="https://actions.google.com/sounds/v1/ambiences/coffee_shop.ogg" type="audio/ogg">
+            </audio>
+        </div>
+
+        <button class="closeSettings" onclick="closeSettingsModal()">Tutup Panel Owner</button>
+    </div>
+</div>
+
+
+<!-- ==================================
+     MODAL PEMBAYARAN MANUAL
+================================== -->
+
+<div id="payModal">
+    <div class="modalContent">
+        <div class="modalBadge">MANUAL PAYMENT</div>
+        <h2>Konfirmasi Pembayaran</h2>
+        <p class="modalSubtitle">Silakan transfer manual ke tujuan di bawah ini</p>
+        
+        <div class="payInfoBox">
+            <div class="payRow">
+                <span>Metode Pembayaran</span>
+                <strong id="modalPayMethod" style="color:#c084fc;">DANA</strong>
+            </div>
+            
+            <div class="dividerLine"></div>
+
+            <div class="payRow">
+                <span>Nomor Tujuan</span>
+                <div class="payValueContainer">
+                    <strong id="modalPayNumber" style="color:#4ade80;">085789796490</strong>
+                    <button class="copyBtn" onclick="copyToClipboard('modalPayNumber')">Salin</button>
+                </div>
+            </div>
+
+            <div class="dividerLine"></div>
+
+            <div class="payRow">
+                <span>Total Transfer</span>
+                <div class="payValueContainer">
+                    <strong id="modalPayAmount" style="color:#fbbf24; font-size:16px;">Rp0</strong>
+                    <button class="copyBtn" onclick="copyToClipboard('modalPayAmount')">Salin</button>
+                </div>
+            </div>
+        </div>
+
+        <p id="modalInstruction" style="font-size:12px; color:#94a3b8; margin-bottom:20px; line-height:1.4;">
+            Pastikan Anda mentransfer sesuai nominal di atas. Setelah selesai transfer, klik tombol di bawah untuk mengirim konfirmasi pesanan ke WhatsApp admin.
+        </p>
+
+        <button class="checkStatusBtn" id="checkBtn" onclick="confirmTransfer()">
+            ✓ SAYA SUDAH TRANSFER (KIRIM KE WA)
+        </button>
+
+        <div style="text-align:center;">
+            <button class="cancelModal" onclick="closeModal()">Batalkan Transaksi</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- ==================================
+     MAIN APP
+================================== -->
+
+<div class="app">
+
+    <!-- NAVBAR -->
+
+    <div class="navbar">
+        <div class="brand-container">
+            <div class="brand">JokiSosmed.id 👤</div>
+            <div id="displayVisitorName" class="userBadgeHeader">Halo, Pengunjung</div>
+        </div>
+        <div class="navbar-right">
+            <button class="settingsGearBtn" onclick="requestOwnerAccess()" title="Pengaturan Owner">
+                ⚙️ Owner
+            </button>
+        </div>
+    </div>
+
+
+    <!-- HERO -->
+
+    <div class="hero">
+        <div class="marqueeContainer">
+            <span class="marqueeText" id="marqueeGreeting">
+                ✨ Selamat Datang di JokiSosmed.id ⚡ ✨
+            </span>
+        </div>
+        <p>
+            Pilih platform dan layanan yang kamu inginkan untuk mendongkrak popularitasmu secara instan dan aman.
+        </p>
+    </div>
+
+
+    <!-- FEATURES -->
+
+    <div class="section">
+        <div class="sectionTitle">
+            Keunggulan JokiSosmed.id ⚡
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <div class="featureIcon">⚡</div>
+                <div class="featureText">
+                    <strong>Proses Mudah</strong>
+                    <span>Pilih platform dan jumlah sesuai kebutuhan.</span>
+                </div>
+            </div>
+            <div class="feature">
+                <div class="featureIcon">💰</div>
+                <div class="featureText">
+                    <strong>Harga Transparan</strong>
+                    <span>Kalkulasi harga otomatis dan murah.</span>
+                </div>
+            </div>
+            <div class="feature">
+                <div class="featureIcon">📱</div>
+                <div class="featureText">
+                    <strong>Mobile Friendly</strong>
+                    <span>Sangat nyaman digunakan di berbagai perangkat HP.</span>
+                </div>
+            </div>
+            <div class="feature">
+                <div class="featureIcon">💬</div>
+                <div class="featureText">
+                    <strong>WhatsApp Channel</strong>
+                    <span>Tersedia layanan lengkap termasuk suntik channel.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- PLATFORMS (LOGO ASLI SVG) -->
+
+    <div class="section" style="margin-top:30px;">
+
+        <div class="sectionTitle">
+            1. Pilih Platform
+        </div>
+
+        <div class="platforms">
+
+            <button
+                class="platform active"
+                onclick="selectPlatform('TikTok',this)">
+                <div class="platformIcon">
+                    <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+                </div>
+                <div class="platformName">TikTok</div>
+            </button>
+
+            <button
+                class="platform"
+                onclick="selectPlatform('Facebook',this)">
+                <div class="platformIcon">
+                    <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                </div>
+                <div class="platformName">Facebook</div>
+            </button>
+
+            <button
+                class="platform"
+                onclick="selectPlatform('YouTube',this)">
+                <div class="platformIcon">
+                    <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                </div>
+                <div class="platformName">YouTube</div>
+            </button>
+
+            <button
+                class="platform"
+                onclick="selectPlatform('WhatsApp Channel',this)">
+                <div class="platformIcon">
+                    <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                </div>
+                <div class="platformName">WhatsApp Channel</div>
+            </button>
+
+        </div>
+
+
+        <!-- SERVICE -->
+
+        <div class="serviceBox">
+            <div class="serviceTitle">
+                2. Pilih Layanan
+            </div>
+            <div class="services" id="services">
+                <button class="service active" onclick="selectService('Followers',this)">
+                    Followers
+                </button>
+                <button class="service" onclick="selectService('Likes',this)">
+                    Likes
+                </button>
+                <button class="service" onclick="selectService('Views',this)">
+                    Views
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- CUSTOM ORDER -->
+
+    <div class="section">
+
+        <div class="sectionTitle">
+            3. Request Detail & Pembayaran
+        </div>
+
+        <div class="customBox">
+
+            <div class="orderFormGroup">
+                <label class="label" id="targetLabel">
+                    Link Target / Username
+                    <span class="badge-hint">Wajib Diisi</span>
+                </label>
+                <div class="inputWrapper">
+                    <input
+                        id="targetLink"
+                        class="input"
+                        type="text"
+                        placeholder="Contoh: https://tiktok.com/@username..."
+                    >
+                </div>
+            </div>
+
+            <div class="orderFormGroup" style="margin-top:16px;">
+                <label class="label" id="amountLabel">
+                    Jumlah Followers
+                    <span class="badge-hint">Rate Rp5/pcs</span>
+                </label>
+                <div class="inputWrapper">
+                    <input
+                        id="amount"
+                        class="input"
+                        type="number"
+                        placeholder="Masukkan jumlah pesanan..."
+                        oninput="calculatePrice()"
+                    >
+                </div>
+            </div>
+
+            <div class="orderFormGroup" style="margin-top:16px;">
+                <label class="label">
+                    Metode Pembayaran
+                    <span class="badge-hint">Manual Transfer</span>
+                </label>
+                <div class="payments">
+                    <button
+                        class="payment active"
+                        onclick="selectPayment('DANA', this)">
+                        <strong>DANA</strong>
+                        <small>Manual Transfer</small>
+                    </button>
+
+                    <button
+                        class="payment"
+                        onclick="selectPayment('GoPay', this)">
+                        <strong>GoPay</strong>
+                        <small>Manual Transfer</small>
+                    </button>
+                </div>
+            </div>
+
+            <div class="price">
+                <div class="priceInfoLeft">
+                    <small>Estimasi Total</small>
+                    <span id="summaryText">0 Qty Selected</span>
+                </div>
+                <strong id="price">
+                    Rp0
+                </strong>
+            </div>
+
+            <button
+                class="orderBtn"
+                onclick="proceedCheckout()">
+                ⚡ BAYAR & ORDER SEKARANG
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- PACKAGES -->
+
+    <div class="section">
+
+        <div class="sectionTitle">
+            Paket Populer
+        </div>
+
+        <div class="packages">
+            <div class="package">
+                <h3>1K</h3>
+                <p>1.000</p>
+                <div class="packagePrice">Rp5.000</div>
+                <button onclick="checkoutPackage(1000)">Pilih</button>
+            </div>
+            <div class="package">
+                <h3>2K</h3>
+                <p>2.000</p>
+                <div class="packagePrice">Rp10.000</div>
+                <button onclick="checkoutPackage(2000)">Pilih</button>
+            </div>
+            <div class="package">
+                <h3>3K</h3>
+                <p>3.000</p>
+                <div class="packagePrice">Rp15.000</div>
+                <button onclick="checkoutPackage(3000)">Pilih</button>
+            </div>
+            <div class="package">
+                <h3>4K</h3>
+                <p>4.000</p>
+                <div class="packagePrice">Rp20.000</div>
+                <button onclick="checkoutPackage(4000)">Pilih</button>
+            </div>
+            <div class="package">
+                <h3>5K</h3>
+                <p>5.000</p>
+                <div class="packagePrice">Rp25.000</div>
+                <button onclick="checkoutPackage(5000)">Pilih</button>
+            </div>
+            <div class="package">
+                <h3>6K</h3>
+                <p>6.000</p>
+                <div class="packagePrice">Rp30.000</div>
+                <button onclick="checkoutPackage(6000)">Pilih</button>
+            </div>
+            <div class="package">
+                <h3>7K</h3>
+                <p>7.000</p>
+                <div class="packagePrice">Rp35.000</div>
+                <button onclick="checkoutPackage(7000)">Pilih</button>
+            </div>
+            <div class="package">
+                <h3>8K</h3>
+                <p>8.000</p>
+                <div class="packagePrice">Rp40.000</div>
+                <button onclick="checkoutPackage(8000)">Pilih</button>
+            </div>
+            <div class="package">
+                <h3>9K</h3>
+                <p>9.000</p>
+                <div class="packagePrice">Rp45.000</div>
+                <button onclick="checkoutPackage(9000)">Pilih</button>
+            </div>
+            <div class="package">
+                <h3>10K</h3>
+                <p>10.000</p>
+                <div class="packagePrice">Rp50.000</div>
+                <button onclick="checkoutPackage(10000)">Pilih</button>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="note">
+        Gunakan layanan sesuai ketentuan platform masing-masing.
+    </div>
+
+</div>
+
+
+<script>
+
+/* ==============================
+   CONFIG
+============================== */
+
+const rate = 5;
+const whatsapp = "6285789796490";
+const danaNumber = "085789796490 (a.n PUTRANASUTION)";
+const gopayNumber = "085789796490 (a.n PUTRANASUTION)";
+const ownerPin = "777";
+
+let selectedPlatform = "TikTok";
+let selectedService = "Followers";
+let selectedPayment = "DANA";
+let currentOrderData = null;
+
+
+/* ==============================
+   ANTI-BYPASS SENSOR KATA KASAR / NEGATIF
+============================== */
+
+function cleanStringForCheck(str) {
+    return str.toLowerCase()
+        .replace(/3/g, 'e')
+        .replace(/4/g, 'a')
+        .replace(/1/g, 'i')
+        .replace(/0/g, 'o')
+        .replace(/5/g, 's')
+        .replace(/7/g, 't')
+        .replace(/[\s\-_.,*@!#]+/g, '');
+}
+
+const forbiddenKeywords = [
+    "kontol", "cntl", "kntol", "vagina", "vgn", "memek", "mmk", 
+    "anjing", "njg", "anjg", "babi", "bangsat", "bgst", "pler", 
+    "pepek", "ngentot", "ngntt", "colmek", "clmk", "titit", 
+    "peler", "asu", "bajingan", "bjngan", "tolol", "goblok", 
+    "gblk", "kampret", "setan", "pantek", "bodoh", "keparat", 
+    "lonte", "bitch", "dick", "pussy", "bujang", "bjng", "bujng", "bjang", "bjg"
+];
+
+function containsForbiddenWord(text) {
+    const cleaned = cleanStringForCheck(text);
+    for (let word of forbiddenKeywords) {
+        if (cleaned.includes(word)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+
+/* ==============================
+   ENTER WEBSITE & VALIDASI NAMA
+============================== */
+
+function enterWebsite(){
+    const nameInput = document.getElementById("visitorName");
+    const name = nameInput.value.trim();
+    
+    if(name === ""){
+        alert("Silakan masukkan nama Anda terlebih dahulu sebelum masuk!");
+        nameInput.focus();
+        return;
+    }
+
+    if(containsForbiddenWord(name)){
+        alert("⚠️ Mohon maaf, penggunaan nama yang mengandung kata-kata kasar/negatif (meskipun disingkat atau disamarkan) dilarang keras di JokiSosmed.id!");
+        nameInput.value = "";
+        nameInput.focus();
+        return;
+    }
+
+    document.getElementById("opening").style.display = "none";
+
+    document.getElementById("displayVisitorName").innerText = `Halo, ${name}`;
+
+    const marquee = document.getElementById("marqueeGreeting");
+    marquee.innerText = `🔥 Halo Selamat Datang, ${name}! Selamat Berbelanja di JokiSosmed.id ⚡ 🔥`;
+}
+
+
+/* ==============================
+   SISTEM KEAMANAN GEAR / OWNER PANEL
+============================== */
+
+function requestOwnerAccess(){
+    document.getElementById("ownerPinModal").style.display = "flex";
+    document.getElementById("ownerPinInput").value = "";
+    document.getElementById("ownerPinInput").focus();
+}
+
+function closeOwnerPinModal(){
+    document.getElementById("ownerPinModal").style.display = "none";
+}
+
+function verifyOwnerPin(){
+    const enteredPin = document.getElementById("ownerPinInput").value.trim();
+    if(enteredPin === ownerPin){
+        closeOwnerPinModal();
+        document.getElementById("settingsModal").style.display = "flex";
+    } else {
+        alert("❌ PIN Owner Salah! Akses ditolak.");
+        document.getElementById("ownerPinInput").value = "";
+        document.getElementById("ownerPinInput").focus();
+    }
+}
+
+function closeSettingsModal(){
+    document.getElementById("settingsModal").style.display = "none";
+}
+
+function setTheme(primaryColor, secondaryColor, accentColor){
+    document.documentElement.style.setProperty('--primary', primaryColor);
+    document.documentElement.style.setProperty('--secondary', secondaryColor);
+    document.documentElement.style.setProperty('--accent', accentColor);
+    alert("Tema warna website berhasil diubah!");
+}
+
+let isPlayingMusic = false;
+function toggleMusic(){
+    const audio = document.getElementById("bgMusic");
+    const btn = document.getElementById("musicToggleBtn");
+    
+    if(!isPlayingMusic){
+        audio.play().then(() => {
+            isPlayingMusic = true;
+            btn.innerText = "🎵 Putar Musik Santai: ON";
+        }).catch(err => {
+            alert("Gagal memutar musik otomatis, silakan coba lagi.");
+        });
+    } else {
+        audio.pause();
+        isPlayingMusic = false;
+        btn.innerText = "🎵 Putar Musik Santai: OFF";
+    }
+}
+
+
+/* ==============================
+   PLATFORM
+============================== */
+
+function selectPlatform(platform, element){
+    selectedPlatform = platform;
+    document.querySelectorAll(".platform").forEach(button => {
+        button.classList.remove("active");
+    });
+    element.classList.add("active");
+    updateServices();
+}
+
+
+/* ==============================
+   UPDATE SERVICES
+============================== */
+
+function updateServices(){
+    const services = document.getElementById("services");
+    const label = document.getElementById("amountLabel");
+
+    if(selectedPlatform === "WhatsApp Channel"){
+        services.innerHTML = `
+            <button class="service active" onclick="selectService('Suntik Channel',this)">
+                Suntik Channel
+            </button>
+        `;
+        selectedService = "Suntik Channel";
+        label.innerHTML = `Jumlah Member / Suntikan <span class="badge-hint">Rate Rp5/pcs</span>`;
+        return;
+    }
+
+    services.innerHTML = `
+        <button class="service active" onclick="selectService('Followers',this)">
+            Followers
+        </button>
+        <button class="service" onclick="selectService('Likes',this)">
+            Likes
+        </button>
+        <button class="service" onclick="selectService('Views',this)">
+            Views
+        </button>
+    `;
+    selectedService = "Followers";
+    const titleLabel = selectedPlatform === "YouTube" ? "Jumlah Subscribers" : "Jumlah Followers";
+    label.innerHTML = `${titleLabel} <span class="badge-hint">Rate Rp5/pcs</span>`;
+}
+
+
+/* ==============================
+   SERVICE
+============================== */
+
+function selectService(service, element){
+    selectedService = service;
+    document.querySelectorAll(".service").forEach(button => {
+        button.classList.remove("active");
+    });
+    element.classList.add("active");
+}
+
+
+/* ==============================
+   PAYMENT METHOD
+============================== */
+
+function selectPayment(payment, element){
+    selectedPayment = payment;
+    document.querySelectorAll(".payment").forEach(button => {
+        button.classList.remove("active");
+    });
+    element.classList.add("active");
+}
+
+
+/* ==============================
+   CALCULATE PRICE
+============================== */
+
+function calculatePrice(){
+    const amount = parseInt(document.getElementById("amount").value) || 0;
+    const totalPrice = amount * rate;
+    
+    document.getElementById("price").innerText = "Rp" + totalPrice.toLocaleString("id-ID");
+    
+    if(amount > 0) {
+        document.getElementById("summaryText").innerText = `${amount.toLocaleString("id-ID")} ${selectedService}`;
+    } else {
+        document.getElementById("summaryText").innerText = "0 Qty Selected";
+    }
+}
+
+
+/* ==============================
+   CHECKOUT PROSES (CUSTOM)
+============================== */
+
+function proceedCheckout(){
+    const targetLink = document.getElementById("targetLink").value.trim();
+    const amount = parseInt(document.getElementById("amount").value);
+
+    if(!targetLink){
+        alert("Silakan masukkan link target atau username terlebih dahulu!");
+        document.getElementById("targetLink").focus();
+        return;
+    }
+
+    if(!amount || amount <= 0){
+        alert("Silakan masukkan jumlah pesanan yang valid terlebih dahulu!");
+        document.getElementById("amount").focus();
+        return;
+    }
+
+    const totalPrice = amount * rate;
+
+    currentOrderData = {
+        platform: selectedPlatform,
+        service: selectedService,
+        targetLink: targetLink,
+        amount: amount,
+        totalPrice: totalPrice,
+        payment: selectedPayment
+    };
+
+    openModal();
+}
+
+
+/* ==============================
+   CHECKOUT PROSES (PACKAGE)
+============================== */
+
+function checkoutPackage(amount){
+    const targetLink = document.getElementById("targetLink").value.trim();
+
+    if(!targetLink){
+        alert("Silakan masukkan link target atau username terlebih dahulu pada form di atas!");
+        document.getElementById("targetLink").focus();
+        return;
+    }
+
+    const totalPrice = amount * rate;
+
+    currentOrderData = {
+        platform: selectedPlatform,
+        service: selectedService,
+        targetLink: targetLink,
+        amount: amount,
+        totalPrice: totalPrice,
+        payment: selectedPayment
+    };
+
+    openModal();
+}
+
+
+/* ==============================
+   MODAL CONTROL
+============================== */
+
+function openModal(){
+    document.getElementById("modalPayMethod").innerText = currentOrderData.payment;
+    document.getElementById("modalPayNumber").innerText = currentOrderData.payment === "DANA" ? danaNumber : gopayNumber;
+    document.getElementById("modalPayAmount").innerText = "Rp" + currentOrderData.totalPrice.toLocaleString("id-ID");
+    
+    document.getElementById("payModal").style.display = "flex";
+}
+
+function closeModal(){
+    document.getElementById("payModal").style.display = "none";
+}
+
+
+/* ==============================
+   COPY TO CLIPBOARD HELPER
+============================== */
+
+function copyToClipboard(elementId){
+    const text = document.getElementById(elementId).innerText;
+    navigator.clipboard.writeText(text).then(() => {
+        alert("Berhasil disalin: " + text);
+    });
+}
+
+
+/* ==============================
+   KONFIRMASI TRANSFER MANUAL KE WHATSAPP
+============================== */
+
+function confirmTransfer(){
+    const data = currentOrderData;
+    const visitorNameInput = document.getElementById("visitorName").value.trim();
+
+    const message = 
+        `> [ *NEW ORDER & TRANSFER MANUAL - JOKISOSMED.ID* ] <\n` +
+        `----------------------------------------\n` +
+        `Halo Admin, saya *${visitorNameInput}* sudah melakukan pembayaran manual dengan detail berikut:\n\n` +
+        `* Target Platform : ${data.platform}\n` +
+        `* Jenis Layanan : ${data.service}\n` +
+        `* Link Target : *${data.targetLink}*\n` +
+        `* Jumlah Qty : *${data.amount.toLocaleString("id-ID")}*\n` +
+        `* Total Payment : *Rp${data.totalPrice.toLocaleString("id-ID")}*\n` +
+        `* Metode Pembayaran : *${data.payment} (Manual Transfer)*\n\n` +
+        `----------------------------------------\n` +
+        `Mohon dicek dan segera diproses ya Admin, terima kasih!`;
+
+    const url = `https://wa.me/${whatsapp}?text=${encodeURIComponent(message)}`;
+    
+    closeModal();
+    window.open(url, "_blank");
+}
+
+</script>
+
+</body>
+</html>
